@@ -202,7 +202,7 @@ function saveButton(): void {
 }
 function startButton(): void {
     localStorage.clear();
-    window.open("ihalter.html", "_self");
+    window.open("iHalter.html", "_self");
 }
 
 function backButton(): void {
