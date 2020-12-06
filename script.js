@@ -14,8 +14,8 @@ let sendServer;
 let countw = 0;
 //Klasse für ds versendete serverpaket
 class ServerPaket {
-    constructor(_waffel, _belag, _eis, _halter) {
-        this.waffel = _waffel;
+    constructor(_waffelfel, _belag, _eis, _halter) {
+        this.waffel = _waffelfel;
         this.belag = _belag;
         this.eis = _eis;
         this.halter = _halter;
@@ -48,7 +48,7 @@ class EisBase {
 }
 //#region Element Erstellung
 //Parsing and Creation of Elements/Selection (läd aus der data.json alle  elemnte in das saveObject array)
-async function jayson() {
+async function fetchingJson() {
     let response = await fetch("data.json");
     let json = await response.json();
     let jsonString = JSON.stringify(json);
@@ -58,11 +58,11 @@ async function parsingJson() {
     if (curSite != "index") {
         loadDisplay("fortschritt");
     }
-    let pjson = JSON.parse(await jayson());
+    let parsedJson = JSON.parse(await fetchingJson());
     let i = 0;
-    for (let key in pjson) {
-        if (pjson[key].stil == innerSite) {
-            let obj = new EisBase(pjson[key].name, pjson[key].preis, pjson[key].stil, pjson[key].path);
+    for (let key in parsedJson) {
+        if (parsedJson[key].stil == innerSite) {
+            let obj = new EisBase(parsedJson[key].name, parsedJson[key].preis, parsedJson[key].stil, parsedJson[key].path);
             saveObject[i] = obj;
             i++;
             obj.flexCreate();
@@ -92,7 +92,7 @@ function selectedObj(k, arr) {
     selectedParts[curSiteNumber] = k;
 }
 //Läd aus dem Lokal storage die Displayitems und zeiigt sie abhängig von de seite an 
-function loadDisplay(_ausw) {
+function loadDisplay(_displayAuswahl) {
     let saveEis = [];
     for (let i = 0; i < 4; i++) {
         let arrEis = JSON.parse(localStorage.getItem(partsString[i]));
@@ -100,7 +100,7 @@ function loadDisplay(_ausw) {
             saveEis[i] = new EisBase(arrEis.name, arrEis.preis, arrEis.stil, arrEis.path);
         }
     }
-    displayRes(saveEis, _ausw);
+    displayRes(saveEis, _displayAuswahl);
     //Extrafunktion falls die Seite die Index seite ist
     if (curSite == "index") {
         sendServer = new ServerPaket(saveEis[0], saveEis[1], saveEis[2], saveEis[3]);
@@ -110,15 +110,15 @@ function loadDisplay(_ausw) {
     }
 }
 //displayed den Fortschritt an der linken seite der Website
-function displayRes(_arrEisBase, _ausw) {
-    let divAus = document.getElementById(_ausw);
+function displayRes(_arrEisBase, _displayAuswahl) {
+    let divAus = document.getElementById(_displayAuswahl);
     for (let i = 0; i < 4; i++) {
         let ausWahl = document.createElement("div");
         if (_arrEisBase[i] != undefined) {
-            divAus.replaceChild(ausWahl, document.getElementById(_ausw + _arrEisBase[i].stil));
-            ausWahl.setAttribute("id", _ausw + _arrEisBase[i].stil);
+            divAus.replaceChild(ausWahl, document.getElementById(_displayAuswahl + _arrEisBase[i].stil));
+            ausWahl.setAttribute("id", _displayAuswahl + _arrEisBase[i].stil);
         }
-        if (_ausw == "ausgewahlt") {
+        if (_displayAuswahl == "ausgewahlt") {
             if (_arrEisBase[i] != undefined) {
                 ausWahl.innerHTML = "<img src = " + _arrEisBase[i].path + "></img>" + "<h2>Extra: " + _arrEisBase[i].name + "</h2><h2>Preis: " + _arrEisBase[i].preis + "€ </h2>";
             }
@@ -134,10 +134,10 @@ function displayRes(_arrEisBase, _ausw) {
     }
 }
 //Erstellt den text  mit dem preis an der Seite der Index(Start/End) Seite (Übergabeparameter kein array, um übersicht zu halten)
-function displayProduct(_waf, _top, _ice, _hol) {
+function displayProduct(_waffel, _topping, _ice, _holder) {
     let produktDiv = document.getElementById("Produkt");
     produktDiv.innerHTML = "<b><u>Ihr Eis: </u></b><br>";
-    if (_ice == undefined && _hol == undefined && _waf == undefined && _top == undefined) {
+    if (_ice == undefined && _holder == undefined && _waffel == undefined && _topping == undefined) {
         produktDiv.innerHTML = "";
     }
     else {
@@ -149,20 +149,20 @@ function displayProduct(_waf, _top, _ice, _hol) {
         else {
             produktDiv.innerHTML += "Eisloses Eis ";
         }
-        if (_top != undefined) {
-            produktDiv.innerHTML += " mit " + _top.name;
-            price += _top.preis;
+        if (_topping != undefined) {
+            produktDiv.innerHTML += " mit " + _topping.name;
+            price += _topping.preis;
         }
-        if (_hol != undefined) {
-            produktDiv.innerHTML += " in einer(-em) " + _hol.name;
-            price += _hol.preis;
+        if (_holder != undefined) {
+            produktDiv.innerHTML += " in einer(-em) " + _holder.name;
+            price += _holder.preis;
         }
         else {
             produktDiv.innerHTML += "ohne Halter";
         }
-        if (_waf != undefined) {
-            produktDiv.innerHTML += " plus extra " + _waf.name;
-            price += _waf.preis;
+        if (_waffel != undefined) {
+            produktDiv.innerHTML += " plus extra " + _waffel.name;
+            price += _waffel.preis;
         }
         produktDiv.innerHTML += "<br><b><u>Preis:</u> " + price + "€</b>";
     }
@@ -185,7 +185,7 @@ function backButton() {
     window.open("i" + pages[curSiteNumber] + ".html", "_self");
 }
 //#endregion
-//#region Multi-Eventhandler  (Buttons und laden der Seite)
+//#region Multi-Eventhandler (Buttons und laden der Seite), bestimmt was angezeigt wird
 function eventHandler() {
     if (curSite == "index") {
         document.getElementById("startButton").addEventListener("click", startButton);
@@ -229,18 +229,18 @@ function siteHandle() {
 }
 //Checkt ob man schonmal auf der Index seite war (Nach dem start oder Reset), ist schöner den code so zu lassen als ihn zu kürzen!
 function siteVisited() {
-    let pWaf = JSON.parse(localStorage.getItem("Waffel"));
-    let pTop = JSON.parse(localStorage.getItem("Belag"));
-    let pIce = JSON.parse(localStorage.getItem("Eis"));
-    let pHol = JSON.parse(localStorage.getItem("Halter"));
-    if (pIce == null && pHol == null && pWaf == null && pTop == null) {
+    let parsedWaffel = JSON.parse(localStorage.getItem("Waffel"));
+    let parsedTopping = JSON.parse(localStorage.getItem("Belag"));
+    let parsedIce = JSON.parse(localStorage.getItem("Eis"));
+    let parsedHolder = JSON.parse(localStorage.getItem("Halter"));
+    if (parsedIce == null && parsedHolder == null && parsedWaffel == null && parsedTopping == null) {
         return false;
     }
     else {
         return true;
     }
 }
-function createAuswahltDiv() {
+function createAusgewahltDiv() {
     let auswahl = document.createElement("div");
     auswahl.setAttribute("id", "ausgewahlt");
     hBody.appendChild(auswahl);
@@ -278,7 +278,7 @@ function showServerMessage(_message) {
         messageDiv.style.color = "red";
     }
 }
-//Normaler seiten-ablauf( Einfach für die übersicht)
+//Normaler seiten-ablauf (Einfach für die übersicht)
 init();
 function init() {
     siteHandle();
@@ -287,7 +287,7 @@ function init() {
     parsingJson();
     setTimeout(listenToSelection, 100);
     if (curSite == "index" && siteVisited() == true) {
-        createAuswahltDiv();
+        createAusgewahltDiv();
         loadDisplay("fortschritt");
         loadDisplay("ausgewahlt");
         getServerMessage("https://gis-communication.herokuapp.com/");
