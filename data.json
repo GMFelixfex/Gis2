@@ -1,4 +1,5 @@
 [
+    
     { "name": "Knuspertaler", "preis": 0.2, "stil": "Waffel", "path": "/Media/Waffel/1_Waffel.png" }, 
     { "name": "Herzwaffel", "preis": 0.4, "stil": "Waffel", "path": "/Media/Waffel/2_Waffel.png" }, 
     { "name": "Bärchen", "preis": 0.6, "stil": "Waffel", "path": "/Media/Waffel/3_Waffel.png" },
