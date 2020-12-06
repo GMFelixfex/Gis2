@@ -3,15 +3,14 @@ let hBody: HTMLElement = document.body;
 
 //Arrays/Variablen für die verwendung im Script
 let saveObject: EisBase[] = [];
-let partsString: string[] = ["Waffel", "Belag", "Eis", "Halter"];
+let stringOfParts: string[] = ["Waffel", "Belag", "Eis", "Halter"];
 let selectedParts: number[] = [-1, -1, -1, -1];
 let curSite: string = "";
 let innerSite: string = "";
 let curSiteNumber: number = -1;
-let pages: string[] = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
-let stilEng: string[] = ["Holder", "Ice", "Topping", "Waffel"];
+let differentPages: string[] = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
+let partsInEng: string[] = ["Holder", "Ice", "Topping", "Waffel"];
 let sendServer: ServerPaket;
-let countw: number = 0;
 
 //Klasse für ds versendete serverpaket
 class ServerPaket {
@@ -52,7 +51,6 @@ class EisBase {
         divWaffel.appendChild(newElemnt);
         newElemnt.setAttribute("class", "generated");
         newElemnt.innerHTML = "<img src = " + this.path + "></img>" + this.name + "<br>" + " Preis: " + this.preis + "€";
-        countw++;
     }
 
 
@@ -121,7 +119,7 @@ interface Parsing {
 function loadDisplay(_displayAuswahl: string): void {
     let saveEis: EisBase[] = [];
     for (let i: number = 0; i < 4; i++) {
-        let arrEis: Parsing = JSON.parse(localStorage.getItem(partsString[i]));
+        let arrEis: Parsing = JSON.parse(localStorage.getItem(stringOfParts[i]));
         if (arrEis != null) {
             saveEis[i] = new EisBase(arrEis.name, arrEis.preis, arrEis.stil, arrEis.path);
         }
@@ -186,9 +184,11 @@ function displayProduct(_waffel: EisBase, _topping: EisBase, _ice: EisBase, _hol
             produktDiv.innerHTML += " plus extra " + _waffel.name;
             price += _waffel.preis;
         }
-        produktDiv.innerHTML += "<br><b><u>Preis:</u> " + price + "€</b>";
+        produktDiv.innerHTML += "<br><b><u>Preis:</u> " + Math.round(price * 10) / 10 + "€</b>";
     }
 }
+
+
 //#endregion
 
 //#region Buttonlogic
@@ -197,7 +197,7 @@ function saveButton(): void {
         let obj: EisBase = saveObject[selectedParts[curSiteNumber]];
         let myJSON: string = JSON.stringify(obj);
         localStorage.setItem(curSite, myJSON);
-        window.open("i" + pages[curSiteNumber + 2] + ".html", "_self");
+        window.open("i" + differentPages[curSiteNumber + 2] + ".html", "_self");
     }
 }
 function startButton(): void {
@@ -206,7 +206,7 @@ function startButton(): void {
 }
 
 function backButton(): void {
-    window.open("i" + pages[curSiteNumber] + ".html", "_self");
+    window.open("i" + differentPages[curSiteNumber] + ".html", "_self");
 }
 //#endregion
 
@@ -260,7 +260,7 @@ function createAusgewahltDiv(): void {
 
     for (let i: number = 0; i < 4; i++) {
         let auswahlDiv: HTMLDivElement = document.createElement("div");
-        auswahlDiv.setAttribute("id", "ausgewahlt" + stilEng[i]);
+        auswahlDiv.setAttribute("id", "ausgewahlt" + partsInEng[i]);
         auswahl.appendChild(auswahlDiv);
     }
 }

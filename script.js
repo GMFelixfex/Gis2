@@ -3,15 +3,14 @@ let hHead = document.head;
 let hBody = document.body;
 //Arrays/Variablen für die verwendung im Script
 let saveObject = [];
-let partsString = ["Waffel", "Belag", "Eis", "Halter"];
+let stringOfParts = ["Waffel", "Belag", "Eis", "Halter"];
 let selectedParts = [-1, -1, -1, -1];
 let curSite = "";
 let innerSite = "";
 let curSiteNumber = -1;
-let pages = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
-let stilEng = ["Holder", "Ice", "Topping", "Waffel"];
+let differentPages = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
+let partsInEng = ["Holder", "Ice", "Topping", "Waffel"];
 let sendServer;
-let countw = 0;
 //Klasse für ds versendete serverpaket
 class ServerPaket {
     constructor(_waffelfel, _belag, _eis, _halter) {
@@ -43,7 +42,6 @@ class EisBase {
         divWaffel.appendChild(newElemnt);
         newElemnt.setAttribute("class", "generated");
         newElemnt.innerHTML = "<img src = " + this.path + "></img>" + this.name + "<br>" + " Preis: " + this.preis + "€";
-        countw++;
     }
 }
 //#region Element Erstellung
@@ -95,7 +93,7 @@ function selectedObj(k, arr) {
 function loadDisplay(_displayAuswahl) {
     let saveEis = [];
     for (let i = 0; i < 4; i++) {
-        let arrEis = JSON.parse(localStorage.getItem(partsString[i]));
+        let arrEis = JSON.parse(localStorage.getItem(stringOfParts[i]));
         if (arrEis != null) {
             saveEis[i] = new EisBase(arrEis.name, arrEis.preis, arrEis.stil, arrEis.path);
         }
@@ -164,7 +162,7 @@ function displayProduct(_waffel, _topping, _ice, _holder) {
             produktDiv.innerHTML += " plus extra " + _waffel.name;
             price += _waffel.preis;
         }
-        produktDiv.innerHTML += "<br><b><u>Preis:</u> " + price + "€</b>";
+        produktDiv.innerHTML += "<br><b><u>Preis:</u> " + Math.round(price * 10) / 10 + "€</b>";
     }
 }
 //#endregion
@@ -174,7 +172,7 @@ function saveButton() {
         let obj = saveObject[selectedParts[curSiteNumber]];
         let myJSON = JSON.stringify(obj);
         localStorage.setItem(curSite, myJSON);
-        window.open("i" + pages[curSiteNumber + 2] + ".html", "_self");
+        window.open("i" + differentPages[curSiteNumber + 2] + ".html", "_self");
     }
 }
 function startButton() {
@@ -182,7 +180,7 @@ function startButton() {
     window.open("ihalter.html", "_self");
 }
 function backButton() {
-    window.open("i" + pages[curSiteNumber] + ".html", "_self");
+    window.open("i" + differentPages[curSiteNumber] + ".html", "_self");
 }
 //#endregion
 //#region Multi-Eventhandler (Buttons und laden der Seite), bestimmt was angezeigt wird
@@ -246,7 +244,7 @@ function createAusgewahltDiv() {
     hBody.appendChild(auswahl);
     for (let i = 0; i < 4; i++) {
         let auswahlDiv = document.createElement("div");
-        auswahlDiv.setAttribute("id", "ausgewahlt" + stilEng[i]);
+        auswahlDiv.setAttribute("id", "ausgewahlt" + partsInEng[i]);
         auswahl.appendChild(auswahlDiv);
     }
 }
