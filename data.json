@@ -1,30 +1,29 @@
 [
+    {"name": "Knuspertaler", "preis": 0.2, "stil": "Waffel", "path": "../Gis2/Media/Waffel/1_Waffel.png" }, 
+    {"name": "Herzwaffel", "preis": 0.4, "stil": "Waffel", "path": "../Gis2/Media/Waffel/2_Waffel.png" }, 
+    {"name": "Bärchen", "preis": 0.6, "stil": "Waffel", "path": "../Gis2/Media/Waffel/3_Waffel.png" },
+    {"name": "Knusperplatte", "preis": 0.1, "stil": "Waffel", "path": "../Gis2/Media/Waffel/4_Waffel.png" }, 
+    {"name": "Knusperhalm", "preis": 0.4, "stil": "Waffel", "path": "../Gis2/Media/Waffel/5_Waffel.png" }, 
+    {"name": "Knusperherz", "preis": 0.5, "stil": "Waffel", "path": "../Gis2/Media/Waffel/6_Waffel.png" },
     
-    { "name": "Knuspertaler", "preis": 0.2, "stil": "Waffel", "path": "/Media/Waffel/1_Waffel.png" }, 
-    { "name": "Herzwaffel", "preis": 0.4, "stil": "Waffel", "path": "/Media/Waffel/2_Waffel.png" }, 
-    { "name": "Bärchen", "preis": 0.6, "stil": "Waffel", "path": "/Media/Waffel/3_Waffel.png" },
-    { "name": "Knusperplatte", "preis": 0.1, "stil": "Waffel", "path": "/Media/Waffel/4_Waffel.png" }, 
-    { "name": "Knusperhalm", "preis": 0.4, "stil": "Waffel", "path": "/Media/Waffel/5_Waffel.png" }, 
-    { "name": "Knusperherz", "preis": 0.5, "stil": "Waffel", "path": "/Media/Waffel/6_Waffel.png" },
+    {"name":"Vanille","preis":1,"stil":"Ice","path":"../Gis2/Media/Eis/1_Eis.png"},
+    {"name":"Erdbeer","preis":1,"stil":"Ice","path":"../Gis2/Media/Eis/2_Eis.png"},
+    {"name":"Dunkleschokolade","preis":1,"stil":"Ice","path":"../Gis2/Media/Eis/3_Eis.png"},
+    {"name":"Schokolade","preis":1,"stil":"Ice","path":"../Gis2/Media/Eis/4_Eis.png"},
+    {"name":"Blaubeer","preis":1,"stil":"Ice","path":"../Gis2/Media/Eis/5_Eis.png"},
+    {"name":"Banane","preis":1,"stil":"Ice","path":"../Gis2/Media/Eis/6_Eis.png"},
+    {"name":"Bubblegum","preis":1,"stil":"Ice","path":"../Gis2/Media/Eis/7_Eis.png"},
     
-    {"name":"Vanille","preis":1,"stil":"Ice","path":"/Media/Eis/1_Eis.png"},
-    {"name":"Erdbeer","preis":1,"stil":"Ice","path":"/Media/Eis/2_Eis.png"},
-    {"name":"Dunkleschokolade","preis":1,"stil":"Ice","path":"/Media/Eis/3_Eis.png"},
-    {"name":"Schokolade","preis":1,"stil":"Ice","path":"/Media/Eis/4_Eis.png"},
-    {"name":"Blaubeer","preis":1,"stil":"Ice","path":"/Media/Eis/5_Eis.png"},
-    {"name":"Banane","preis":1,"stil":"Ice","path":"/Media/Eis/6_Eis.png"},
-    {"name":"Bubblegum","preis":1,"stil":"Ice","path":"/Media/Eis/7_Eis.png"},
+    {"name":"Spitzwaffel","preis":0.2,"stil":"Holder","path":"../Gis2/Media/Halter/1_Halter.png"},
+    {"name":"Kurzbecher","preis":0.1,"stil":"Holder","path":"../Gis2/Media/Halter/2_Halter.png"},
+    {"name":"Langbecher","preis":0.2,"stil":"Holder","path":"../Gis2/Media/Halter/3_Halter.png"},
+    {"name":"Erdbeerwaffel","preis":0.4,"stil":"Holder","path":"../Gis2/Media/Halter/4_Halter.png"},
+    {"name":"Bitterwaffel","preis":0.4,"stil":"Holder","path":"../Gis2/Media/Halter/5_Halter.png"},
     
-    {"name":"Spitzwaffel","preis":0.2,"stil":"Holder","path":"/Media/Halter/1_Halter.png"},
-    {"name":"Kurzbecher","preis":0.1,"stil":"Holder","path":"/Media/Halter/2_Halter.png"},
-    {"name":"Langbecher","preis":0.2,"stil":"Holder","path":"/Media/Halter/3_Halter.png"},
-    {"name":"Erdbeerwaffel","preis":0.4,"stil":"Holder","path":"/Media/Halter/4_Halter.png"},
-    {"name":"Bitterwaffel","preis":0.4,"stil":"Holder","path":"/Media/Halter/5_Halter.png"},
-    
-    {"name":"Schokostreusel","preis":0.3,"stil":"Topping","path":"/Media/Belag/1_Belag.png"},
-    {"name":"Karamellstreusel","preis":0.4,"stil":"Topping","path":"/Media/Belag/2_Belag.png"},
-    {"name":"Erdbeerstreusel","preis":0.3,"stil":"Topping","path":"/Media/Belag/3_Belag.png"},
-    {"name":"Vanillestreusel","preis":0.3,"stil":"Topping","path":"/Media/Belag/4_Belag.png"},
-    {"name":"Minzestreusel","preis":0.4,"stil":"Topping","path":"/Media/Belag/5_Belag.png"}
+    {"name":"Schokostreusel","preis":0.3,"stil":"Topping","path":"../Gis2/Media/Belag/1_Belag.png"},
+    {"name":"Karamellstreusel","preis":0.4,"stil":"Topping","path":"../Gis2/Media/Belag/2_Belag.png"},
+    {"name":"Erdbeerstreusel","preis":0.3,"stil":"Topping","path":"../Gis2/Media/Belag/3_Belag.png"},
+    {"name":"Vanillestreusel","preis":0.3,"stil":"Topping","path":"../Gis2/Media/Belag/4_Belag.png"},
+    {"name":"Minzestreusel","preis":0.4,"stil":"Topping","path":"../Gis2/Media/Belag/5_Belag.png"}
     
 ]
