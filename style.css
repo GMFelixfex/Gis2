@@ -24,7 +24,7 @@ body {
     font-family: sans-serif;
 }
 #Background {
-    background-image:   url("/Media/bg.png");
+    background-image:   url("../Gis2/Media/bg.png");
     background-repeat:  repeat;
     margin: 0;
 }
