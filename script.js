@@ -3,13 +3,13 @@ let hHead = document.head;
 let hBody = document.body;
 //Arrays/Variablen für die verwendung im Script
 let saveObject = [];
-let stringOfParts = ["Waffel", "Belag", "Eis", "Halter"];
+const stringOfParts = ["Waffel", "Belag", "Eis", "Halter"];
 let selectedParts = [-1, -1, -1, -1];
 let curSite = "";
 let innerSite = "";
 let curSiteNumber = -1;
-let differentPages = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
-let partsInEng = ["Holder", "Ice", "Topping", "Waffel"];
+const differentPages = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
+const partsInEng = ["Holder", "Ice", "Topping", "Waffel"];
 let sendServer;
 //Klasse für ds versendete serverpaket
 class ServerPaket {

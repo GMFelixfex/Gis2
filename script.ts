@@ -3,13 +3,13 @@ let hBody: HTMLElement = document.body;
 
 //Arrays/Variablen für die verwendung im Script
 let saveObject: EisBase[] = [];
-let stringOfParts: string[] = ["Waffel", "Belag", "Eis", "Halter"];
+const stringOfParts: string[] = ["Waffel", "Belag", "Eis", "Halter"];
 let selectedParts: number[] = [-1, -1, -1, -1];
 let curSite: string = "";
 let innerSite: string = "";
 let curSiteNumber: number = -1;
-let differentPages: string[] = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
-let partsInEng: string[] = ["Holder", "Ice", "Topping", "Waffel"];
+const differentPages: string[] = ["ndex", "Halter", "Eis", "Belag", "Waffel", "ndex"];
+const partsInEng: string[] = ["Holder", "Ice", "Topping", "Waffel"];
 let sendServer: ServerPaket;
 
 //Klasse für ds versendete serverpaket
